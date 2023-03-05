@@ -74,7 +74,6 @@ Function ConvertFrom-VDF {
 
         return $root
     }
-    ==
 }
 
 # Check to see if assets are available
@@ -148,7 +147,7 @@ if (Test-Path -Path $TF2InstallPath\tf\download\maps\mvm_underground_rc3.bsp) {
 }
 else{
 	# Error and quit
-	Write-Host "An error occured whilst extracting the files. Read the README.pdf in the zip file for manual installation instructions.
+	Write-Host "An error occured whilst extracting the files. Read the README.pdf in the zip file for manual installation instructions."
 	Write-Host -NoNewLine 'Press any key to quit...';
 	$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
 	
