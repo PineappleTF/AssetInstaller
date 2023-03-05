@@ -23,6 +23,8 @@
 ### OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 ### SOFTWARE.
 
+# Enable logging
+Start-Transcript -Path .\Installer.log -NoClobber
 
 # Convert from VDF (Valve keyvalues format) to a PSCustomObject. Forked from https://github.com/fblz/Steam-GetOnTop
 Function ConvertFrom-VDF {
@@ -86,6 +88,7 @@ else {
 	Write-Host "Please extract the full zip file and run this installer again."
 	Write-Host -NoNewLine 'Press any key to quit...';
 	$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
+	End-Transcript
 	exit
 }
 
@@ -100,6 +103,7 @@ else {
 	Write-Host "This installer requires Windows 10 or higher, please upgrade your operating system! Read the README.pdf in the zip file for manual installation instructions."
 	Write-Host -NoNewLine 'Press any key to quit...';
 	$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
+	End-Transcript
 	exit
 }
 
@@ -131,24 +135,21 @@ else {
 		Write-Host "TF2 install directory detection failed. Is TF2 installed on this computer? Read the README.pdf in the zip file for manual installation instructions."
 		Write-Host -NoNewLine 'Press any key to quit...';
 		$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
+		End-Transcript
+		exit
 }
 }
 
 Write-Host "TF2 is installed at $($TF2InstallPath)"
 
 # Copy the tf folder from the asset pack to the TF2 installation folder
-Copy-Item -Path tf -Destination $TF2InstallPath -Recurse -ErrorAction SilentlyContinue
 
-# Check if a file exists
-if (Test-Path -Path $TF2InstallPath\tf\download\maps\mvm_underground_rc3.bsp) {
-		Write-Host "Asset installation suceeded. Launch your game and have fun!"
-		Write-Host -NoNewLine 'Press any key to quit...';
-		$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
-}
-else{
-	# Error and quit
-	Write-Host "An error occured whilst extracting the files. Read the README.pdf in the zip file for manual installation instructions."
-	Write-Host -NoNewLine 'Press any key to quit...';
-	$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
-	
-}
+Copy-Item -Path tf -Destination $TFInstallPath -Recurse -PassThru -ErrorAction SilentlyContinue | ForEach-Object { Write-Host Installed ($_.FullName).Replace("$TFInstallPath","") }
+Write-Host ""
+Write-Host ""
+Write-Host ""
+Write-Host -ForegroundColor Green "Asset installation suceeded. Launch your game and have fun!"
+Write-Host -NoNewLine 'Press any key to quit...';
+$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
+
+End-Transcript
