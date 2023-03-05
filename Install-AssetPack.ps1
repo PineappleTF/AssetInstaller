@@ -1,5 +1,5 @@
 ### Automatic installer for custom TF2 assets.
-
+### https://github.com/PineappleTF/AssetInstaller/
 
 ### MIT License
 ### 
