@@ -1,2 +1,0 @@
-- name: PSMinifier
-  uses: StartAutomating/PSMinifier@v1.1.3
