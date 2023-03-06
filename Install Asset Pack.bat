@@ -1,7 +1,7 @@
 :: Automatic installer for custom TF2 assets.
 :: https://github.com/PineappleTF/AssetInstaller/
 
-:: This file launches the main PowerShell script.
+:: This file launches the main PowerShell script, bypassing the execution policy.
 
 :: MIT License
 :: 
