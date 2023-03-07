@@ -28,8 +28,8 @@
 """
 
 #Standard library imports:
-from os import getcwd, sep, walk, makedirs
-from os.path import isfile, join as path_join, isdir, getsize
+from os import getcwd, makedirs, sep, walk
+from os.path import isdir, isfile, getsize, join as path_join
 from pathlib import Path
 from shutil import copy2
 from subprocess import Popen, PIPE
@@ -46,8 +46,9 @@ def main():
     try:
         from os import getuid
     except ImportError:
-        print("This script can only be run on Linux. Run the install_asset_pack.bat file to automatically install the asset pack on Windows.")
-        raise SystemExit
+        print("This script can only be run on Linux. Run the install_windows.bat file to automatically install the asset pack on Windows.")
+        input("Press Enter to exit...")
+        return None
 
     #This script should not be run as root:
     if getuid() == 0:
