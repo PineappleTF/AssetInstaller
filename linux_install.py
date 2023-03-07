@@ -57,7 +57,7 @@ def main():
     #First, find where Steam is installed on this computer. On failure, abort:
     library_vdf = locate_steam_dir()
     if not library_vdf:
-        print("ERROR: Unable to locate the Steam directory. Please launch Steam before re-running this script or install the asset pack manually.")
+        print("ERROR: Unable to locate the Steam directory. Please launch Steam and re-run this script or install the asset pack manually.")
         return None
 
     #Next, find where TF2 is installed on this computer. On failure, abort:
