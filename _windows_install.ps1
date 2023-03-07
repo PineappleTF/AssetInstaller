@@ -88,7 +88,7 @@ else {
 	Write-Error "Please extract the full zip file and run this installer again."###
 	Write-Output 'Press any key to quit...';
 	$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
-	End-Transcript
+	Stop-Transcript
 	exit
 }
 
@@ -103,7 +103,7 @@ else {
 	Write-Error "This installer requires Windows 10 or higher, please upgrade your operating system! Read the README.pdf in the zip file for manual installation instructions."
 	Write-Output 'Press any key to quit...';
 	$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
-	End-Transcript
+	Stop-Transcript
 	exit
 }
 
@@ -135,7 +135,7 @@ else {
 		Write-Error "TF2 install directory detection failed. Is TF2 installed on this computer? Read the README.pdf in the zip file for manual installation instructions."
 		Write-Output 'Press any key to quit...';
 		$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
-		End-Transcript
+		Stop-Transcript
 		exit
 }
 }
