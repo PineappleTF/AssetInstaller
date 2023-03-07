@@ -24,7 +24,7 @@
 ### SOFTWARE.
 
 # Enable logging
-Start-Transcript -Path .\Installer.log
+Start-Transcript -Path .\asset_installer_output.log
 
 # Convert from VDF (Valve keyvalues format) to a PSCustomObject. Forked from https://github.com/fblz/Steam-GetOnTop
 Function ConvertFrom-VDF {
@@ -144,12 +144,12 @@ Write-Output "TF2 is installed at $($TF2InstallPath)"
 
 # Copy the tf folder from the asset pack to the TF2 installation folder
 
-Copy-Item -Path tf -Destination $TF2InstallPath -Recurse -PassThru -ErrorAction SilentlyContinue | ForEach-Object { Write-Output ($_.FullName).Replace("$TF2InstallPath","") }
+Copy-Item -Path tf -Destination $TF2InstallPath -Recurse -PassThru -ErrorAction SilentlyContinue | ForEach-Object { Write-Output ("Copying: {0}" -f ($_.FullName).Replace("$TF2InstallPath","")) }
 Write-Output ""
 Write-Output ""
 Write-Output ""
-Write-Output "Asset installation suceeded. Launch your game and have fun!"
-Write-Output 'Press any key to quit...';
+Write-Output "Asset pack installation successful. Launch your game and have fun!"
+Write-Output 'Press any key to exit...';
 $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
 
-End-Transcript
+Stop-Transcript

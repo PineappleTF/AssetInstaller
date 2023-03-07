@@ -26,10 +26,10 @@
 :: SOFTWARE.
 
 @echo off
-title TF2 Asset Installer
+title TF2 Asset Pack Installer
 
-if exist Install-AssetPack.ps1 (
-    powershell.exe -executionpolicy bypass -nologo -file "Install-AssetPack.ps1"
+if exist _windows_install.ps1 (
+    powershell.exe -executionpolicy bypass -nologo -file "_windows_install.ps1"
 ) else (
     echo Please extract the full zip file and run this installer again.
     pause
