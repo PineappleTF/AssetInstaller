@@ -46,7 +46,7 @@ def main():
     try:
         from os import getuid
     except ImportError:
-        print("This script can only be run on Linux. Run the install_windows.bat file to automatically install the asset pack on Windows.")
+        print('This script can only be run on Linux. Run the "install_windows.bat" file to automatically install the asset pack on Windows.')
         input("Press Enter to exit...")
         return None
 
